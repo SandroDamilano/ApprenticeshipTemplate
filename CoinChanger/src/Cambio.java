@@ -28,4 +28,12 @@ public class Cambio {
             susMonedas.get(misMonedas.indexOf(unaMoneda)).denominacion() == unaMoneda.denominacion()
         );
     }
+
+    public boolean tieneMenosMonedasQue(Cambio otroCambio){
+        return cantidadDeMonedas() < otroCambio.cantidadDeMonedas();
+    }
+
+    protected int cantidadDeMonedas(){
+        return monedas.size();
+    }
 }
