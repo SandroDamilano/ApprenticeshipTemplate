@@ -10,10 +10,6 @@ public class Moneda {
         return new Moneda(this.denominacion + otraMoneda.denominacion);
     }
 
-    public boolean esMayorA(Moneda otraMoneda){
-        return this.denominacion() > otraMoneda.denominacion();
-    }
-
     public int denominacion(){
         return denominacion;
     }

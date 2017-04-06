@@ -21,11 +21,19 @@ public class Cambio {
     }
 
     public boolean esIgualA(Cambio otroCambio){
-        List<Moneda> misMonedas = monedas.stream().sorted(Comparator.comparing(new Moneda(0)::esMayorA)).collect(Collectors.toList());
-        List<Moneda> susMonedas = otroCambio.monedas.stream().sorted(Comparator.comparing(new Moneda(0)::esMayorA)).collect(Collectors.toList());
+        return tieneLaMismaCantidadDeMonedasQue(otroCambio) && tieneLasMismasMonedasQue(otroCambio);
+    }
+
+    protected boolean tieneLaMismaCantidadDeMonedasQue(Cambio otroCambio){
+        return this.cantidadDeMonedas() == otroCambio.cantidadDeMonedas();
+    }
+
+    protected boolean tieneLasMismasMonedasQue(Cambio otroCambio){
+        List<Moneda> misMonedas = monedas.stream().sorted(Comparator.comparingInt(Moneda::denominacion)).collect(Collectors.toList());
+        List<Moneda> susMonedas = otroCambio.monedas.stream().sorted(Comparator.comparingInt(Moneda::denominacion)).collect(Collectors.toList());
 
         return misMonedas.stream().allMatch(unaMoneda ->
-            susMonedas.get(misMonedas.indexOf(unaMoneda)).denominacion() == unaMoneda.denominacion()
+                susMonedas.get(misMonedas.indexOf(unaMoneda)).denominacion() == unaMoneda.denominacion()
         );
     }
 

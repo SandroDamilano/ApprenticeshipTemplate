@@ -1,30 +1,16 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class CoinChanger {
 
-    protected Cambio cambio = new Cambio(Arrays.asList());
-
     public Cambio mejorCambioDe(int monto, List<Integer> denominaciones){
-//        Stream<Integer> denominacionesValidas = denominaciones.stream().filter(denominacion -> denominacion <= monto);
-//
-//        cambio.agregarMoneda(denominacionesValidas.max(Comparator.naturalOrder()).get());
-//
-//        if(cambio.monto() < monto){
-//             return this.mejorCambioDe(monto - cambio.monto(), denominaciones);
-//        }
-//
-//        return cambio;
-        List<Cambio> cambiosPosibles = todosLosCambiosPosiblesPara(monto, denominaciones, new ArrayList<>());
-        return cambiosPosibles.stream().min(Comparator.comparing(new Cambio(Arrays.asList())::tieneMenosMonedasQue)).get();
+        List<Cambio> cambiosPosibles = todosLosCambiosPosiblesPara(monto, new LinkedList<>(denominaciones), new ArrayList<>());
+        return cambiosPosibles.stream().reduce((unCambio, otroCambio) -> unCambio.tieneMenosMonedasQue(otroCambio) ? unCambio : otroCambio).get();
     }
 
     protected List<Cambio> todosLosCambiosPosiblesPara(int monto, List<Integer> denominaciones, List<Cambio> cambios){
-        cambios.add(cambioDe(monto, denominaciones));
-        denominaciones.remove(denominaciones.size()-1);
+        cambios.add(cambioDe(monto, monto, denominaciones, new Cambio(Arrays.asList())));
+        denominaciones.remove(denominaciones.stream().max(Comparator.naturalOrder()).get());
 
         if(denominaciones.isEmpty()){
             return cambios;
@@ -33,15 +19,15 @@ public class CoinChanger {
         }
     }
 
-    protected Cambio cambioDe(int monto, List<Integer> denominaciones){
-        Stream<Integer> denominacionesValidas = denominaciones.stream().filter(denominacion -> denominacion <= monto);
+    protected Cambio cambioDe(int montoTotal, int montoRestante, List<Integer> denominaciones, Cambio unCambio){
+        Stream<Integer> denominacionesValidas = denominaciones.stream().filter(denominacion -> denominacion <= montoRestante);
 
-        cambio.agregarMoneda(denominacionesValidas.max(Comparator.naturalOrder()).get());
+        unCambio.agregarMoneda(denominacionesValidas.max(Comparator.naturalOrder()).get());
 
-        if(cambio.monto() < monto){
-            return this.cambioDe(monto - cambio.monto(), denominaciones);
+        if(unCambio.monto() < montoTotal){
+            return this.cambioDe(montoTotal, montoTotal - unCambio.monto(), denominaciones, unCambio);
         }
 
-        return cambio;
+        return unCambio;
     }
 }
