@@ -55,6 +55,14 @@ public class CoinChangerTest {
     }
 
     @Test
+    public void testDelMal() {
+        List<Integer> denominaciones = Arrays.asList(1, 7, 10, 25, 50);
+        CoinChanger coinChanger = new CoinChanger();
+        Cambio mejorCambio = coinChanger.mejorCambioDe(114, denominaciones);
+        assert(mejorCambio.esIgualA(new Cambio(Arrays.asList(50, 50, 50, 50, 7, 7))));
+    }
+
+    @Test
     public void testElMejorCambioEsElMismoAPesarDelOrdenEnElQueAparezcanLasDenominaciones() {
         List<Integer> unasDenominaciones = Arrays.asList(1, 5, 7, 10);
         List<Integer> otrasDenominaciones = Arrays.asList(5, 1, 10, 7);
