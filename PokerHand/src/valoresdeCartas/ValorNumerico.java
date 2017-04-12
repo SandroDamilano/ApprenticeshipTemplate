@@ -1,4 +1,6 @@
 package valoresdeCartas;
+import exceptions.CartaInvalidaException;
+
 
 /**
  * Created by sandro on 10/04/17.
@@ -6,7 +8,9 @@ package valoresdeCartas;
 public class ValorNumerico implements ValorDeCarta {
     protected int numero;
 
-    public ValorNumerico(int unValor){
+    public ValorNumerico(Integer unValor){
+//        if(unValor < 2 || unValor > 9)
+//            throw new CartaInvalidaException();
         numero = unValor;
     }
 

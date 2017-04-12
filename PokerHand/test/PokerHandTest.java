@@ -1,3 +1,5 @@
+import main.Carta;
+import main.PokerHand;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -54,9 +56,33 @@ public class PokerHandTest {
     }
 
     @Test
-    public void unaManoLeGanaAOtraPorHighestCardComparandoCartasNoNumericas(){
-        PokerHand manoBlanca = new PokerHand(Arrays.asList(new Carta("K",'s'), new Carta(5,'d'), new Carta(9,'h'), new Carta(8,'s'), new Carta(7,'c')));
-        PokerHand manoNegra = new PokerHand(Arrays.asList(new Carta("Q",'s'), new Carta(5,'d'), new Carta(8,'h'), new Carta(6,'s'), new Carta(7,'c')));
+    public void cuandoLasHighestCardsSonIgualesGanaLaManoQueTengaLaSegundaHighestCard(){
+        PokerHand manoBlanca = new PokerHand(Arrays.asList(new Carta(2,'s'), new Carta(5,'d'), new Carta("Q",'h'), new Carta(8,'s'), new Carta(7,'c')));
+        PokerHand manoNegra = new PokerHand(Arrays.asList(new Carta(2,'s'), new Carta(5,'d'), new Carta("Q",'h'), new Carta(6,'s'), new Carta(7,'c')));
+
+        assert(manoBlanca.leGanaA(manoNegra));
+    }
+
+    @Test
+    public void unParLeGanaAUnaHighCard(){
+        PokerHand manoBlanca = new PokerHand(Arrays.asList(new Carta(2,'s'), new Carta(5,'d'), new Carta(9,'h'), new Carta(8,'s'), new Carta(7,'c')));
+        PokerHand manoNegra = new PokerHand(Arrays.asList(new Carta(2,'s'), new Carta(2,'d'), new Carta(8,'h'), new Carta(6,'s'), new Carta(7,'c')));
+
+        assert(manoNegra.leGanaA(manoBlanca));
+    }
+
+    @Test
+    public void unParLeGanaAOtroParSiEsDeValoresMasAltos(){
+        PokerHand manoBlanca = new PokerHand(Arrays.asList(new Carta(5,'s'), new Carta(5,'d'), new Carta(6,'h'), new Carta(8,'s'), new Carta(7,'c')));
+        PokerHand manoNegra = new PokerHand(Arrays.asList(new Carta(2,'s'), new Carta(2,'d'), new Carta("K",'h'), new Carta(6,'s'), new Carta(7,'c')));
+
+        assert(manoBlanca.leGanaA(manoNegra));
+    }
+
+    @Test
+    public void cuandoLosParesTienenElMismoValorGanaLaManoConLaCartaMasAlta(){
+        PokerHand manoBlanca = new PokerHand(Arrays.asList(new Carta(5,'s'), new Carta(5,'d'), new Carta(6,'h'), new Carta(8,'s'), new Carta(7,'c')));
+        PokerHand manoNegra = new PokerHand(Arrays.asList(new Carta(2,'s'), new Carta(2,'d'), new Carta("K",'h'), new Carta(6,'s'), new Carta(7,'c')));
 
         assert(manoBlanca.leGanaA(manoNegra));
     }

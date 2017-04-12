@@ -1,3 +1,5 @@
+package main;
+
 import valoresdeCartas.*;
 
 import java.util.Arrays;
@@ -17,8 +19,4 @@ public class ProveedorDeValoresDeCartas {
     public ValorNoNumericoDeCarta obtenerValorPara(String unValor) {
         return valoresDeCartas.stream().filter(valor -> valor.canHandle(unValor)).findFirst().get();
     }
-
-//    public ValorNoNumericoDeCarta obtenerValorPara(Integer unValor) {
-//        return valoresDeCartas.stream().filter(valor -> valor.canHandle(unValor)).findFirst().get();
-//    }
 }
