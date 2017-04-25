@@ -3,24 +3,12 @@ class PuntajeA
     'A'
   end
 
-  def puntaje_proximo_si_el_otro_es(puntaje_rival)
-    Puntaje0.new
+  def gano_el_punto_contra(marcador_ganador, marcador_rival)
+    marcador_ganador.ganar_game_contra(marcador_rival)
   end
 
-  def puntaje_proximo_del_rival_si_es_40
-    Puntaje40.new
-  end
-
-  def puntaje_del_rival_si_anotas(puntaje_rival)
-    puntaje_rival.puntaje_si_marco_el_a
-  end
-
-  def puntaje_si_marco_el_40
-    Puntaje40.new
-  end
-
-  def puntaje_si_marco_el_a
-    raise 'El rival no puede estar en ventaja'
+  def perdio_el_punto_contra_40(marcador_perdedor, marcador_rival)
+    marcador_perdedor.actualizar_puntaje(Puntaje40.new)
   end
 
 end
