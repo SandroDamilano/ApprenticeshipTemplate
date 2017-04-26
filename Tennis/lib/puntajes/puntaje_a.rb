@@ -3,6 +3,10 @@ class PuntajeA
     'A'
   end
 
+  def descripcion
+    'Advantage'
+  end
+
   def gano_el_punto_contra(marcador_ganador, marcador_rival)
     marcador_ganador.ganar_game_contra(marcador_rival)
   end

@@ -11,6 +11,10 @@ class MarcadorDeGame
     @puntaje.puntaje
   end
 
+  def descripcion_puntos
+    @puntaje.descripcion
+  end
+
   def ganar_punto_contra(un_marcador_rival)
     @puntaje.gano_el_punto_contra(self,un_marcador_rival)
   end

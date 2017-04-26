@@ -3,6 +3,10 @@ class Puntaje40
     40
   end
 
+  def descripcion
+    'Forty'
+  end
+
   def gano_el_punto_contra(marcador_ganador, marcador_rival)
     marcador_rival.perder_punto_contra_40(marcador_ganador)
   end
