@@ -2,9 +2,9 @@ require 'rspec'
 require 'require_all'
 require_all 'lib'
 
-describe MarcadorGlobal do
+describe MarcadorDeJugador do
 
-  let(:marcador_rival) {MarcadorGlobal.new}
+  let(:marcador_rival) {MarcadorDeJugador.new}
 
   it 'Cuando se inicia un marcador global, no tiene puntos ni games' do
     expect(subject.puntos).to eq(0)

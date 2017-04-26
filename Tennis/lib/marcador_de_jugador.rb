@@ -1,4 +1,4 @@
-class MarcadorGlobal
+class MarcadorDeJugador
 
   attr_reader :marcador_de_game, :marcador_de_set
 
