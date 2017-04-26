@@ -1,9 +1,10 @@
 class MarcadorDeGame
 
-  attr_reader :puntaje
+  attr_reader :puntaje, :marcador_de_set
 
-  def initialize
+  def initialize(un_marcador_de_set)
     @puntaje = Puntaje01530.puntaje_0
+    @marcador_de_set = un_marcador_de_set
   end
 
   def puntos
@@ -23,6 +24,7 @@ class MarcadorDeGame
   end
 
   def ganar_game_contra(un_marcador_rival)
+    @marcador_de_set.ganar_game_contra(un_marcador_rival.marcador_de_set)
     self.actualizar_puntaje(Puntaje01530.puntaje_0)
     un_marcador_rival.actualizar_puntaje(Puntaje01530.puntaje_0)
   end

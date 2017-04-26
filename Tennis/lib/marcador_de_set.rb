@@ -2,9 +2,8 @@ class MarcadorDeSet
 
   attr_reader :games, :marcador_de_game
 
-  def initialize #(un_marcador_de_game)
+  def initialize
     @games = 0
-    # @marcador_de_game = un_marcador_de_game
   end
 
   def ganar_game_contra(otro_marcador_de_set)
@@ -13,10 +12,6 @@ class MarcadorDeSet
     else
       @games += 1
     end
-  end
-
-  def ganar_punto_contra(otro_marcador_de_set)
-    # @marcador_de_game.anotaste_contra(otro_marcador_de_set.marcador_de_game)
   end
 
 end
