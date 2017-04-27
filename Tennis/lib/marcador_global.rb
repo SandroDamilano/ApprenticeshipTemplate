@@ -59,4 +59,10 @@ class MarcadorGlobal
     @servidor.termino_el_set?
   end
 
+  def ganador
+    marcadores_de_jugador = [@servidor, @restador]
+    marcador_de_jugador_ganador = marcadores_de_jugador.detect(lambda {MarcadorDeJugador.new('')}){|marcador_de_jugador| marcador_de_jugador.gano?}
+    marcador_de_jugador_ganador.jugador
+  end
+
 end

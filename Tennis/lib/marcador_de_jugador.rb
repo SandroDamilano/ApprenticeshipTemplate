@@ -28,4 +28,8 @@ class MarcadorDeJugador
     @marcador_de_set.finalizado?
   end
 
+  def gano?
+    marcador_de_set.gano_el_jugador_representado?
+  end
+
 end

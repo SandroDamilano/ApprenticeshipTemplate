@@ -15,9 +15,10 @@ describe MarcadorDeSet do
     expect(subject.games).to eq 1
   end
 
-  it 'Cuando un marcador con 5 games gana otro game, el set está finalizado' do
+  it 'Cuando un marcador con 5 games gana otro game, el set está finalizado y el ganador tiene 6 games' do
     sumar_games(subject, 5, rival)
     subject.ganar_game_contra(rival)
+    expect(subject.games).to eq 6
     expect(subject.finalizado?).to be_truthy
   end
 
@@ -47,6 +48,11 @@ describe MarcadorDeSet do
 
   it 'Cuando ninguno de los jugadores ganó el set aún, el set no está finalizado' do
     expect(subject.finalizado?).to be_falsey
+  end
+
+  it 'Cuando un set está finalizado, al ganar un game más debe ocurrir una excepción' do
+    sumar_games(subject, 6, rival)
+    expect{subject.ganar_game_contra(rival)}.to raise_error 'El set finalizó'
   end
 
   def sumar_games(marcador_de_set, veces, otro_marcador_de_set)

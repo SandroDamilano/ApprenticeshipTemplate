@@ -93,6 +93,20 @@ describe MarcadorGlobal do
       expect(marcador.termino_el_set?).to be_falsey
     end
 
+    it 'Cuando el set finalizó, el marcador sabe responder quién lo ganó' do
+      ganar_puntos_para_servidor(marcador, 4)
+      ganar_puntos_para_restador(marcador, 4)
+      ganar_puntos_para_servidor(marcador, 4)
+      ganar_puntos_para_restador(marcador, 4)
+      ganar_puntos_para_servidor(marcador, 4)
+      ganar_puntos_para_restador(marcador, 4)
+      expect(marcador.ganador).to eq 'Del Potro'
+    end
+
+    it 'Cuando el set no finalizó aún, no hay ganador' do
+      expect(marcador.ganador).to eq ''
+    end
+
   end
 
   def ganar_puntos_para_servidor(un_marcador, una_cantidad)
