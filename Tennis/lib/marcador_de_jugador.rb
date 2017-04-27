@@ -24,4 +24,8 @@ class MarcadorDeJugador
     @marcador_de_game.ganar_punto_contra(otro_marcador_de_jugador.marcador_de_game)
   end
 
+  def termino_el_set?
+    @marcador_de_set.finalizado?
+  end
+
 end

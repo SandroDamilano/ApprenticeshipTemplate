@@ -55,4 +55,8 @@ class MarcadorGlobal
     '' << @jugador_1.games.to_s << ' - ' << @jugador_2.games.to_s
   end
 
+  def termino_el_set?
+    @servidor.termino_el_set?
+  end
+
 end
