@@ -1,6 +1,6 @@
 package main;
 
-import valoresdeCartas.*;
+import valoresDeNaipes.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,15 +8,15 @@ import java.util.List;
 /**
  * Created by sandro on 10/04/17.
  */
-public class ProveedorDeValoresDeCartas {
+public class ProveedorDeValoresDeNaipes {
 
-    protected List<ValorNoNumericoDeCarta> valoresDeCartas;
+    protected List<ValorNoNumericoDeNaipe> valoresDeCartas;
 
-    public ProveedorDeValoresDeCartas(){
+    public ProveedorDeValoresDeNaipes(){
         valoresDeCartas = Arrays.asList(new ValorA(), new ValorK(), new ValorQ(), new ValorJ(), new ValorT());
     }
 
-    public ValorNoNumericoDeCarta obtenerValorPara(String unValor) {
+    public ValorNoNumericoDeNaipe obtenerValorPara(String unValor) {
         return valoresDeCartas.stream().filter(valor -> valor.canHandle(unValor)).findFirst().get();
     }
 }

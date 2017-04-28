@@ -10,6 +10,7 @@ public interface TipoDeJugada {
     boolean canHandle(PokerHand unaMano);
     boolean leGanaA(TipoDeJugada otraJugada);
 
+    boolean pierdeContraParDoble(JugadaParDoble otraJugada);
     boolean pierdeContraPar(JugadaPar otraJugada);
-    boolean pierdeContraCartaMasAlta(JugadaCartaMasAlta otraJugada);
+    boolean pierdeContraCartaMasAlta(JugadaNaipeMasAlto otraJugada);
 }

@@ -1,18 +1,18 @@
-package valoresdeCartas;
+package valoresDeNaipes;
 
 /**
  * Created by sandro on 10/04/17.
  */
-public class ValorK implements ValorNoNumericoDeCarta {
+public class ValorJ implements ValorNoNumericoDeNaipe {
 
     @Override
     public boolean canHandle(String unValor) {
-        return unValor == "K";
+        return unValor == "J";
     }
 
     @Override
-    public boolean esMayorQue(ValorDeCarta otroValor) {
-        return otroValor.esMenorQueK();
+    public boolean esMayorQue(ValorDeNaipe otroValor) {
+        return otroValor.esMenorQueJ();
     }
 
     @Override
@@ -22,12 +22,12 @@ public class ValorK implements ValorNoNumericoDeCarta {
 
     @Override
     public boolean esMenorQueK() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean esMenorQueQ() {
-        return false;
+        return true;
     }
 
     @Override

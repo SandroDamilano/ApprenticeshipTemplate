@@ -1,22 +1,18 @@
-package valoresdeCartas;
-import exceptions.CartaInvalidaException;
-
+package valoresDeNaipes;
 
 /**
  * Created by sandro on 10/04/17.
  */
-public class ValorNumerico implements ValorDeCarta {
-    protected int numero;
+public class ValorT implements ValorNoNumericoDeNaipe {
 
-    public ValorNumerico(Integer unValor){
-//        if(unValor < 2 || unValor > 9)
-//            throw new CartaInvalidaException();
-        numero = unValor;
+    @Override
+    public boolean canHandle(String unValor) {
+        return unValor == "T";
     }
 
     @Override
-    public boolean esMayorQue(ValorDeCarta otroValor) {
-        return otroValor.esMenorQue(numero);
+    public boolean esMayorQue(ValorDeNaipe otroValor) {
+        return otroValor.esMenorQueT();
     }
 
     @Override
@@ -41,11 +37,11 @@ public class ValorNumerico implements ValorDeCarta {
 
     @Override
     public boolean esMenorQueT() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean esMenorQue(Integer valor) {
-        return numero < valor;
+        return false;
     }
 }

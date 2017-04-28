@@ -1,11 +1,11 @@
-package valoresdeCartas;
+package valoresDeNaipes;
 
 /**
  * Created by sandro on 10/04/17.
  */
-public interface ValorDeCarta {
+public interface ValorDeNaipe {
 
-    boolean esMayorQue(ValorDeCarta otroValor);
+    boolean esMayorQue(ValorDeNaipe otroValor);
     boolean esMenorQueA();
     boolean esMenorQueK();
     boolean esMenorQueQ();

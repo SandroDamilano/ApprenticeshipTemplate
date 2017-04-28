@@ -1,40 +1,33 @@
 package jugadas;
 
-import main.Carta;
+import main.ConjuntoDeNaipes;
+import main.Naipe;
 import main.PokerHand;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by sandro on 12/04/17.
  */
 public class JugadaPar implements TipoDeJugada {
 
-    List<Carta> par;
-    JugadaCartaMasAlta restoDeLasCartas;
+    ConjuntoDeNaipes par;
+    JugadaNaipeMasAlto restoDeLasCartas;
 
 
-    public JugadaPar(PokerHand unaMano){
-        List<Carta> cartas = unaMano.cartas();
-        par = cartas.stream()
-                .filter(unaCarta -> cartas.stream()
-                                        .filter(carta -> !carta.equals(unaCarta))
-                                        .anyMatch(otraCarta -> otraCarta.tieneElMismoValorQue(unaCarta)))
-                .collect(Collectors.toList());
-        restoDeLasCartas = new JugadaCartaMasAlta(
-                cartas.stream()
-                        .filter(carta -> !par.contains(carta))
-                        .collect(Collectors.toList())
-        );
+    public JugadaPar(ConjuntoDeNaipes unosNaipes){
+        par = unosNaipes.naipesRepetidos();
+        restoDeLasCartas = new JugadaNaipeMasAlto(unosNaipes.naipesSinRepetir());
     }
 
     @Override
     public boolean canHandle(PokerHand unaMano){
-        return unaMano.cartas().stream()
-                .anyMatch(carta -> unaMano.cartas().stream()
-                        .filter(unaCarta -> !unaCarta.equals(carta))
-                        .anyMatch(otraCarta -> carta.tieneElMismoValorQue(otraCarta)));
+//        return unaMano.naipes().stream()
+//                .anyMatch(naipe -> unaMano.naipes().stream()
+//                        .filter(unNaipe -> !unNaipe.equals(naipe))
+//                        .anyMatch(otroNaipe -> naipe.tieneElMismoValorQue(otroNaipe)));
+
+        return unaMano.naipesRepetidos().cantidad() == 2;
     }
 
     @Override
@@ -43,16 +36,21 @@ public class JugadaPar implements TipoDeJugada {
     }
 
     @Override
-    public boolean pierdeContraPar(JugadaPar otraJugada) {
-        if(par.get(0).tieneElMismoValorQue(otraJugada.par.get(0))){
-            return otraJugada.restoDeLasCartas.leGanaA(restoDeLasCartas);
-        }
-
-        return otraJugada.par.get(0).esMayorQue(par.get(0));
+    public boolean pierdeContraParDoble(JugadaParDoble otraJugada) {
+        return true;
     }
 
     @Override
-    public boolean pierdeContraCartaMasAlta(JugadaCartaMasAlta otraJugada) {
+    public boolean pierdeContraPar(JugadaPar otraJugada) {
+        if(par.alguno().tieneElMismoValorQue(otraJugada.par.alguno())){
+            return otraJugada.restoDeLasCartas.leGanaA(restoDeLasCartas);
+        }
+
+        return otraJugada.par.alguno().esMayorQue(par.alguno());
+    }
+
+    @Override
+    public boolean pierdeContraCartaMasAlta(JugadaNaipeMasAlto otraJugada) {
         return false;
     }
 

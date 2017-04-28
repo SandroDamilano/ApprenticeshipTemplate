@@ -1,7 +1,9 @@
 package main;
 
-import jugadas.JugadaCartaMasAlta;
-import jugadas.JugadaPar;
+import armadoresDeJugadas.ArmadorDeJugadaNaipeMasAlto;
+import armadoresDeJugadas.ArmadorDeJugadaPar;
+import armadoresDeJugadas.ArmadorDeJugadaParDoble;
+import armadoresDeJugadas.ArmadorDeJugadas;
 import jugadas.TipoDeJugada;
 
 import java.util.Arrays;
@@ -13,11 +15,14 @@ import java.util.List;
 public class ProveedorDeJugadas {
 
     public TipoDeJugada tipoDe(PokerHand unaMano) {
-        List<TipoDeJugada> tiposDeManos = Arrays.asList(new JugadaPar(unaMano));
+//        List<TipoDeJugada> tiposDeManos = Arrays.asList(new JugadaPar(unaMano.naipes), new JugadaParDoble(unaMano.naipes));
+        List<ArmadorDeJugadas> armadoresDeTiposDeManos = Arrays.asList(new ArmadorDeJugadaPar(), new ArmadorDeJugadaParDoble());
 
-        return tiposDeManos.stream()
-                .filter(valor -> valor.canHandle(unaMano))
-                .findFirst()
-                .orElse(new JugadaCartaMasAlta(unaMano.cartas()));
+        ArmadorDeJugadas armador = armadoresDeTiposDeManos.stream()
+                                        .filter(valor -> valor.canHandle(unaMano))
+                                        .findFirst()
+                                        .orElse(new ArmadorDeJugadaNaipeMasAlto());
+
+        return armador.armarJugada(unaMano.naipes());
     }
 }
