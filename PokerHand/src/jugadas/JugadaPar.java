@@ -21,18 +21,13 @@ public class JugadaPar implements TipoDeJugada {
     }
 
     @Override
-    public boolean canHandle(PokerHand unaMano){
-//        return unaMano.naipes().stream()
-//                .anyMatch(naipe -> unaMano.naipes().stream()
-//                        .filter(unNaipe -> !unNaipe.equals(naipe))
-//                        .anyMatch(otroNaipe -> naipe.tieneElMismoValorQue(otroNaipe)));
-
-        return unaMano.naipesRepetidos().cantidad() == 2;
+    public boolean leGanaA(TipoDeJugada otraJugada) {
+        return otraJugada.pierdeContraPar(this);
     }
 
     @Override
-    public boolean leGanaA(TipoDeJugada otraJugada) {
-        return otraJugada.pierdeContraPar(this);
+    public boolean pierdeContraPierna(JugadaPierna otraJugada) {
+        return true;
     }
 
     @Override

@@ -1,24 +1,22 @@
 package armadoresDeJugadas;
 
-import jugadas.JugadaParDoble;
+import jugadas.JugadaPierna;
 import jugadas.TipoDeJugada;
 import main.ConjuntoDeNaipes;
-import main.Naipe;
 import main.PokerHand;
 
 /**
- * Created by sandro on 21/04/17.
+ * Created by sandro on 28/04/17.
  */
-public class ArmadorDeJugadaParDoble implements ArmadorDeJugadas {
+public class ArmadorDeJugadaPierna implements ArmadorDeJugadas {
     @Override
     public boolean canHandle(PokerHand unaMano) {
         ConjuntoDeNaipes naipesRepetidos = unaMano.naipesRepetidos();
-        return naipesRepetidos.cantidad() == 4 &&
-                    !naipesRepetidos.tienenElMismoValor();
+        return naipesRepetidos.cantidad() == 3;
     }
 
     @Override
     public TipoDeJugada armarJugada(ConjuntoDeNaipes unosNaipes) {
-        return new JugadaParDoble(unosNaipes);
+        return new JugadaPierna(unosNaipes);
     }
 }

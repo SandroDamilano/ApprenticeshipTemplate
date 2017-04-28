@@ -24,16 +24,13 @@ public class JugadaParDoble implements TipoDeJugada {
     }
 
     @Override
-    public boolean canHandle(PokerHand unaMano){
-        ConjuntoDeNaipes naipesRepetidos = unaMano.naipesRepetidos();
-        Naipe unNaipe = naipesRepetidos.alguno();
-        return naipesRepetidos.cantidad() == 4 &&
-                naipesRepetidos.naipesDelMismoValorQue(unNaipe).cantidad() != 4;
+    public boolean leGanaA(TipoDeJugada otraJugada) {
+        return otraJugada.pierdeContraParDoble(this);
     }
 
     @Override
-    public boolean leGanaA(TipoDeJugada otraJugada) {
-        return otraJugada.pierdeContraParDoble(this);
+    public boolean pierdeContraPierna(JugadaPierna otraJugada) {
+        return true;
     }
 
     @Override

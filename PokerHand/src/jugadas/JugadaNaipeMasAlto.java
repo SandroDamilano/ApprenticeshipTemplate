@@ -19,13 +19,13 @@ public class JugadaNaipeMasAlto implements TipoDeJugada {
     }
 
     @Override
-    public boolean canHandle(PokerHand unaMano){
-        return true;
+    public boolean leGanaA(TipoDeJugada otraJugada) {
+        return otraJugada.pierdeContraCartaMasAlta(this);
     }
 
     @Override
-    public boolean leGanaA(TipoDeJugada otraJugada) {
-        return otraJugada.pierdeContraCartaMasAlta(this);
+    public boolean pierdeContraPierna(JugadaPierna otraJugada) {
+        return true;
     }
 
     @Override

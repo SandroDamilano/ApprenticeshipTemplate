@@ -53,4 +53,28 @@ public class PokerHandTest {
 
         assert(manoNegra.leGanaA(manoBlanca));
     }
+
+    @Test
+    public void unParDobleLeGanaAOtroParDobleSiTieneUnParMasAltoQueElOtro(){
+        PokerHand manoBlanca = new PokerHand(Arrays.asList(new Naipe("A",'s'), new Naipe("A",'d'), new Naipe(3,'h'), new Naipe(3,'s'), new Naipe(7,'c')));
+        PokerHand manoNegra = new PokerHand(Arrays.asList(new Naipe(2,'s'), new Naipe(2,'d'), new Naipe("K",'h'), new Naipe(6,'s'), new Naipe(6,'c')));
+
+        assert(manoBlanca.leGanaA(manoNegra));
+    }
+
+    @Test
+    public void unaPiernaLeGanaAUnParDoble(){
+        PokerHand manoBlanca = new PokerHand(Arrays.asList(new Naipe("A",'s'), new Naipe(3,'d'), new Naipe(3,'h'), new Naipe(3,'s'), new Naipe(7,'c')));
+        PokerHand manoNegra = new PokerHand(Arrays.asList(new Naipe(2,'s'), new Naipe(2,'d'), new Naipe("K",'h'), new Naipe(6,'s'), new Naipe(6,'c')));
+
+        assert(manoBlanca.leGanaA(manoNegra));
+    }
+
+    @Test
+    public void unaPiernaLeGanaAOtraSiLaPiernaEsDeNaipesDeMayorValorQueLaOtra(){
+        PokerHand manoBlanca = new PokerHand(Arrays.asList(new Naipe("A",'s'), new Naipe(3,'d'), new Naipe(3,'h'), new Naipe(3,'s'), new Naipe(7,'c')));
+        PokerHand manoNegra = new PokerHand(Arrays.asList(new Naipe(2,'s'), new Naipe(6,'d'), new Naipe("K",'h'), new Naipe(6,'s'), new Naipe(6,'c')));
+
+        assert(manoNegra.leGanaA(manoBlanca));
+    }
 }
