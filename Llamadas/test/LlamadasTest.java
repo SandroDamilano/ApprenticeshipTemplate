@@ -13,29 +13,28 @@ public class LlamadasTest {
     }
 
     @Test
-    public void unaLlamadaNacionalDe1MinutoCuesta30Centavos() {
-        Assert.assertEquals(0.30, new LlamadaNacional(1).costo(), 0.01);
-    }
-
-    @Test
-    public void unaLlamadaNacionalDe2MinutoCuesta60Centavos() {
-        Assert.assertEquals(0.60, new LlamadaNacional(2).costo(), 0.01);
-    }
-
-    @Test
     public void unaLlamadaNacionalCuesta30CentavosPorMinuto() {
         Assert.assertEquals(6.00, new LlamadaNacional(20).costo(), 0.01);
     }
 
     @Test
-    public void unaLlamadaInternacionalASudamericaDe1MinutoCuesta50Centavos() {
-        Assert.assertEquals(0.50, new LlamadaInternacional(1, "Sudamerica").costo(), 0.01);
+    public void unaLlamadaInternacionalASudamericaCuesta50CentavosElMinuto() {
+        Assert.assertEquals(8.00, new LlamadaInternacional(16, "Sudamerica").costo(), 0.01);
     }
 
     @Test
-    public void unaLlamadaInternacionalASudamericaDe2MinutoCuesta1Peso() {
-        Assert.assertEquals(1.00, new LlamadaInternacional(2, "Sudamerica").costo(), 0.01);
+    public void unaLlamadaInternacionalANorteAmericaCuesta70CentavosElMinuto() {
+        Assert.assertEquals(21.00, new LlamadaInternacional(30, "Norte-America").costo(), 0.01);
     }
 
+    @Test
+    public void unaLlamadaInternacionalAEuropaCuesta70CentavosElMinuto() {
+        Assert.assertEquals(14.00, new LlamadaInternacional(20, "Europa").costo(), 0.01);
+    }
+
+    @Test
+    public void unaLlamadaInternacionalAlRestoDelMundoCuesta1Peso50CentavosElMinuto() {
+        Assert.assertEquals(22.50, new LlamadaInternacional(15, "Australia").costo(), 0.01);
+    }
 
 }
