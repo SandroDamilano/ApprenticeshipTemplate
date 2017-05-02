@@ -1,7 +1,5 @@
 import org.joda.time.Interval;
 
-import java.time.DayOfWeek;
-
 /**
  * Created by sandro on 02/05/17.
  */
@@ -14,12 +12,18 @@ public class LlamadaLocal {
     }
 
     public Double costo() {
-
-        if(intervaloDeLlamada.getEnd().getHourOfDay() <= 19
-                && intervaloDeLlamada.getEnd().getHourOfDay() >= 8
-                && intervaloDeLlamada.getEnd().getDayOfWeek() < 6)
+        if(esHoraPico() && esDiaHabil())
             return intervaloDeLlamada.toPeriod().getMinutes() * 0.2;
         else
             return intervaloDeLlamada.toPeriod().getMinutes() * 0.1;
+    }
+
+    private boolean esDiaHabil() {
+        return intervaloDeLlamada.getEnd().getDayOfWeek() < 6;
+    }
+
+    private boolean esHoraPico() {
+        return intervaloDeLlamada.getEnd().getHourOfDay() <= 19
+                && intervaloDeLlamada.getEnd().getHourOfDay() >= 8;
     }
 }
