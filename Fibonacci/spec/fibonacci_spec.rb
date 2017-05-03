@@ -31,4 +31,9 @@ describe 'Calculador de números de fibonacci' do
     expect{@calculadorDeFibonacci.numeroFibonacciEnPosicion(1.5)}.to raise_exception NumeroInvalidoException
   end
 
+  it 'El número de fibonacci de la posición 50 es calculable' do
+    @calculadorDeFibonacci.numeroFibonacciEnPosicion(50)
+    expect(@calculadorDeFibonacci.numeroFibonacciEnPosicion(50)).to eq(@calculadorDeFibonacci.numeroFibonacciEnPosicion(48) + @calculadorDeFibonacci.numeroFibonacciEnPosicion(49))
+  end
+
 end

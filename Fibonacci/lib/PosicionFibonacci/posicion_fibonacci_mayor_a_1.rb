@@ -1,7 +1,6 @@
 class PosicionFibonacciMayorA1 < PosicionFibonacci
 
   @numero
-  @proveedorDePosicionesFibonacci
 
   def canHandle(unNumero)
     (unNumero > 1) && (unNumero.modulo(1) == 0)
@@ -9,11 +8,21 @@ class PosicionFibonacciMayorA1 < PosicionFibonacci
 
   def initialize(unNumero)
     @numero = unNumero
-    @proveedorDePosicionesFibonacci = ProveedorDePosicionesFibonacci.new()
   end
 
   def calcularNumeroDeFibonacci()
-    CalculadorDeFibonacci.new().numeroFibonacciEnPosicion(@numero - 1) + CalculadorDeFibonacci.new().numeroFibonacciEnPosicion(@numero - 2)
+    primerNumeroAnterior = 0
+    segundoNumeroAnterior = 0
+    numeroDeFibbonacci = primerNumeroAnterior + segundoNumeroAnterior
+
+    2..@numero.times do
+      primerNumeroAnterior = numeroDeFibbonacci
+      segundoNumeroAnterior = primerNumeroAnterior
+      numeroDeFibbonacci = primerNumeroAnterior + segundoNumeroAnterior
+    end
+
+    numeroDeFibbonacci
+
   end
 
 end
