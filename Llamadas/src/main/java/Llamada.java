@@ -27,6 +27,19 @@ public class Llamada {
         return !origen.esDelMismoPaisQue(destino);
     }
 
+    public boolean esLocal() {
+        return origen.esDelMismoPaisQue(destino) && origen.esDelMismoAreaQue(destino);
+    }
+
+    public boolean esEnDiaHabil() {
+        return intervaloDeLlamada.getEnd().getDayOfWeek() < 6;
+    }
+
+    public boolean esEnHoraPico() {
+        return intervaloDeLlamada.getEnd().getHourOfDay() <= 19
+                && intervaloDeLlamada.getEnd().getHourOfDay() >= 8;
+    }
+
     public Telefono destino(){
         return destino;
     }

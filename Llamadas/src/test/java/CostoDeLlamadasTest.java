@@ -76,20 +76,29 @@ public class CostoDeLlamadasTest {
 
     @Test
     public void unaLlamadaLocalEnFinDeSemanaCuesta10CentavosElMinuto() {
+        Telefono telefonoBsAs = new Telefono("54", 011, 45671234);
+        Telefono otroTelefonoBsAs = new Telefono("54", 011, 45671235);
         Interval intervaloDeLlamada = new Interval(new DateTime(2017, 4, 29, 17, 00), Duration.standardMinutes(25));
-        Assert.assertEquals(2.50, new LlamadaLocal(intervaloDeLlamada).costo(), 0.01);
+        Llamada llamadaLocal = new Llamada(telefonoBsAs, otroTelefonoBsAs, intervaloDeLlamada);
+        Assert.assertEquals(2.50, facturador.montoDe(llamadaLocal), 0.01);
     }
 
     @Test
     public void unaLlamadaLocalEnDiaHabilFueraDeHoraPicoCuesta10CentavosElMinuto() {
+        Telefono telefonoBsAs = new Telefono("54", 011, 45671234);
+        Telefono otroTelefonoBsAs = new Telefono("54", 011, 45671235);
         Interval intervaloDeLlamada = new Interval(new DateTime(2017, 4, 26, 20, 00), Duration.standardMinutes(20));
-        Assert.assertEquals(2.00, new LlamadaLocal(intervaloDeLlamada).costo(), 0.01);
+        Llamada llamadaLocal = new Llamada(telefonoBsAs, otroTelefonoBsAs, intervaloDeLlamada);
+        Assert.assertEquals(2.00, facturador.montoDe(llamadaLocal), 0.01);
     }
 
     @Test
     public void unaLlamadaLocalEnDiaHabilYHoraPicoCuesta20CentavosElMinuto() {
+        Telefono telefonoBsAs = new Telefono("54", 011, 45671234);
+        Telefono otroTelefonoBsAs = new Telefono("54", 011, 45671235);
         Interval intervaloDeLlamada = new Interval(new DateTime(2017, 4, 26, 18, 20), Duration.standardMinutes(47));
-        Assert.assertEquals(9.40, new LlamadaLocal(intervaloDeLlamada).costo(), 0.01);
+        Llamada llamadaLocal = new Llamada(telefonoBsAs, otroTelefonoBsAs, intervaloDeLlamada);
+        Assert.assertEquals(9.40, facturador.montoDe(llamadaLocal), 0.01);
     }
 
 }

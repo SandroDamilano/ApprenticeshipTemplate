@@ -1,3 +1,8 @@
+import facturadoresDeLlamadas.FacturadorDeLlamada;
+import facturadoresDeLlamadas.FacturadorDeLlamadaInternacional;
+import facturadoresDeLlamadas.FacturadorDeLlamadaLocal;
+import facturadoresDeLlamadas.FacturadorDeLlamadaNacional;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +15,7 @@ public class Facturador {
     protected List<FacturadorDeLlamada> facturadoresDeLlamadas;
 
     public Facturador(Map<String, List<String>> unListadoDeCodigosDePaisesPorRegion){
-        facturadoresDeLlamadas = Arrays.asList(new FacturadorDeLlamadaNacional(), new FacturadorDeLlamadaInternacional(unListadoDeCodigosDePaisesPorRegion));
+        facturadoresDeLlamadas = Arrays.asList(new FacturadorDeLlamadaNacional(), new FacturadorDeLlamadaInternacional(unListadoDeCodigosDePaisesPorRegion), new FacturadorDeLlamadaLocal());
     }
 
     public Double montoDe(Llamada unaLlamada) {
