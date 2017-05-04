@@ -1,6 +1,7 @@
 package facturadoresDeLlamadas;
 
 import facturadoresDeLlamadas.FacturadorDeLlamada;
+import main.Llamada;
 
 /**
  * Created by sandro on 04/05/17.

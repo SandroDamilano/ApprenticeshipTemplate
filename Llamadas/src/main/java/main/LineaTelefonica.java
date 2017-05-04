@@ -1,3 +1,6 @@
+package main;
+
+import main.Llamada;
 import org.joda.time.YearMonth;
 
 import java.util.ArrayList;
@@ -9,14 +12,14 @@ import java.util.stream.Collectors;
  */
 public class LineaTelefonica {
 
-    List<LlamadaNacional> llamadasNacionales = new ArrayList<>();
+    List<Llamada> llamadas = new ArrayList<>();
 
-    public void agregarLlamada(LlamadaNacional unaLlamadaNacional) {
-        llamadasNacionales.add(unaLlamadaNacional);
+    public void agregarLlamada(Llamada unaLlamada) {
+        llamadas.add(unaLlamada);
     }
 
-    public List<LlamadaNacional> llamadasNacionalesDelMes(YearMonth unMesDeAnio) {
-        return llamadasNacionales.stream()
+    public List<Llamada> llamadasDelMes(YearMonth unMesDeAnio) {
+        return llamadas.stream()
                 .filter(llamada -> llamada.ocurrioEnElMesDeAnio(unMesDeAnio))
                 .collect(Collectors.toList());
     }

@@ -1,4 +1,8 @@
+package main;
+
+import org.joda.time.DateTime;
 import org.joda.time.Interval;
+import org.joda.time.YearMonth;
 
 /**
  * Created by sandro on 04/05/17.
@@ -42,5 +46,11 @@ public class Llamada {
 
     public Telefono destino(){
         return destino;
+    }
+
+    public boolean ocurrioEnElMesDeAnio(YearMonth unMesDeAnio) {
+        DateTime finDelaLlamada = intervaloDeLlamada.getEnd();
+        return finDelaLlamada.getYear() == unMesDeAnio.getYear()
+                && finDelaLlamada.getMonthOfYear() == unMesDeAnio.getMonthOfYear();
     }
 }

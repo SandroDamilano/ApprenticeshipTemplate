@@ -1,6 +1,7 @@
 package facturadoresDeLlamadas;
 
 import facturadoresDeLlamadas.FacturadorDeLlamada;
+import main.Llamada;
 
 import java.util.List;
 import java.util.Map;

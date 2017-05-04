@@ -1,3 +1,5 @@
+package main;
+
 import org.joda.time.YearMonth;
 
 import java.util.List;
@@ -15,9 +17,9 @@ public class FacturaTelefonica {
         lineaTelefonica = unaLineaTelefonica;
     }
 
-    public Double monto() {
-        List<LlamadaNacional> llamadasNacionalesDelMes = lineaTelefonica.llamadasNacionalesDelMes(mesDeAnio);
-        Double costoDeLlamadas = llamadasNacionalesDelMes.stream().mapToDouble(LlamadaNacional::costo).sum();
+    public Double montoCon(Facturador unFacturador) {
+        List<Llamada> llamadasDelMes = lineaTelefonica.llamadasDelMes(mesDeAnio);
+        Double costoDeLlamadas = llamadasDelMes.stream().mapToDouble(llamada -> unFacturador.montoDe(llamada)).sum();
         return 10 + costoDeLlamadas;
     }
 }
