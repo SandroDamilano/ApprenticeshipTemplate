@@ -12,17 +12,19 @@ import java.util.Map;
  */
 public class LlamadasTestFactory {
 
+    private CodigosFactory codiguera;
     private LineaTelefonica lineaTelefonica;
 
     public LlamadasTestFactory(){
         lineaTelefonica = this.nuevaLineaTelefonica();
+        codiguera = new CodigosFactory();
     }
 
     public Facturador nuevoFacturador(){
-        List<String> codigosDeSudamerica = Arrays.asList("54", "22");
-        List<String> codigosDeNorteamerica = Arrays.asList("1");
-        List<String> codigosDeEuropa = Arrays.asList("12");
-        List<String> codigosDelRestoDelMundo = Arrays.asList("80");
+        List<String> codigosDeSudamerica = Arrays.asList(codiguera.codigoArgentina(), codiguera.codigoUruguay());
+        List<String> codigosDeNorteamerica = Arrays.asList(codiguera.codigoUSA());
+        List<String> codigosDeEuropa = Arrays.asList(codiguera.codigoEspania());
+        List<String> codigosDelRestoDelMundo = Arrays.asList(codiguera.codigoAustralia());
         Map<String, List<String>> listadoDeCodigosDePaisesPorRegion = new HashMap<>();
         listadoDeCodigosDePaisesPorRegion.put("Sudamerica", codigosDeSudamerica);
         listadoDeCodigosDePaisesPorRegion.put("Norteamerica", codigosDeNorteamerica);
@@ -41,10 +43,10 @@ public class LlamadasTestFactory {
     }
 
     public Telefono telefonoBsAs(){
-        return new Telefono("54", 011, 45671234);
+        return new Telefono(codiguera.codigoArgentina(), codiguera.codigoBsAs(), 45671234);
     }
 
     public Telefono telefonoCordoba(){
-        return new Telefono("54", 015, 3245673);
+        return new Telefono(codiguera.codigoArgentina(), codiguera.codigoCordoba(), 3245673);
     }
 }
