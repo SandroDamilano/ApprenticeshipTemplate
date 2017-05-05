@@ -7,16 +7,16 @@ import java.time.LocalDate;
 public class ReglaDeFeriadoConIntervalo implements ReglaDeFeriado{
 
     private IntervaloDeTiempo intervalo;
-    private LocalDate fecha;
+    private ReglaDeFeriado reglaDeFeriado;
 
-    public ReglaDeFeriadoConIntervalo(LocalDate unaFecha, IntervaloDeTiempo unIntervalo){
-        fecha = unaFecha;
+    public ReglaDeFeriadoConIntervalo(ReglaDeFeriado unaReglaDeFeriado, IntervaloDeTiempo unIntervalo){
+        reglaDeFeriado = unaReglaDeFeriado;
         intervalo = unIntervalo;
 
     }
 
     @Override
     public boolean esFeriado(LocalDate unaFecha) {
-        return unaFecha.equals(fecha) && intervalo.contains(unaFecha);
+        return reglaDeFeriado.esFeriado(unaFecha) && intervalo.contains(unaFecha);
     }
 }

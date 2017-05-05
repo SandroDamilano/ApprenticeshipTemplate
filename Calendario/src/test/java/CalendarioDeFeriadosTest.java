@@ -89,7 +89,9 @@ public class CalendarioDeFeriadosTest {
         LocalDate inicio = LocalDate.of(2015, 5, 7);
         LocalDate fin = LocalDate.of(2019, 5, 7);
         IntervaloDeTiempo intervalo = IntervaloDeTiempo.fromDateToDate(inicio, fin);
-        calendarioDeFeriados.agregarReglaDeFeriado(new ReglaDeFeriadoConIntervalo(sabado, intervalo));
+        ReglaDeFeriado unaReglaDeFeriado=new ReglaDeFeriadoDeDiaDeSemana(sabado.getDayOfWeek());
+        calendarioDeFeriados.
+                agregarReglaDeFeriado(new ReglaDeFeriadoConIntervalo(unaReglaDeFeriado, intervalo));
         Assert.assertTrue(calendarioDeFeriados.esFeriado(sabado));
     }
 
@@ -108,16 +110,19 @@ public class CalendarioDeFeriadosTest {
         LocalDate inicio = LocalDate.of(2015, 5, 7);
         LocalDate fin = LocalDate.of(2019, 5, 7);
         IntervaloDeTiempo intervalo = IntervaloDeTiempo.fromDateToDate(inicio, fin);
-        calendarioDeFeriados.agregarReglaDeFeriado(new ReglaDeFeriadoConIntervalo(cumpleaniosDeMaggie, intervalo));
+        ReglaDeFeriado unaReglaDeFeriado = new ReglaDeFeriadoDiaDeMes(MonthDay.of(5,7));
+        calendarioDeFeriados.agregarReglaDeFeriado(new ReglaDeFeriadoConIntervalo(unaReglaDeFeriado, intervalo));
         Assert.assertTrue(calendarioDeFeriados.esFeriado(cumpleaniosDeMaggie));
     }
 
     @Test
-    public void test16UnDiaDelMesPuedeNoSerFeriadoEnUnIntervaloDeTiempo(){
+    public void test16UnDiaDelMesQueEsFeriadoEnUnIntervaloDeTiempoNoLoEsFueraDeEseIntervalo(){
         LocalDate cumpleaniosDeMaggie = LocalDate.of(2017, 5,7);
-        LocalDate inicio = LocalDate.of(2015, 5, 7);
+        LocalDate inicio = LocalDate.of(2018, 5, 7);
         LocalDate fin = LocalDate.of(2019, 5, 7);
+        ReglaDeFeriado unaReglaDeFeriado = new ReglaDeFeriadoDiaDeMes(MonthDay.of(5,7));
         IntervaloDeTiempo intervalo = IntervaloDeTiempo.fromDateToDate(inicio, fin);
+        calendarioDeFeriados.agregarReglaDeFeriado(new ReglaDeFeriadoConIntervalo(unaReglaDeFeriado,intervalo));
         Assert.assertFalse(calendarioDeFeriados.esFeriado(cumpleaniosDeMaggie));
     }
 
