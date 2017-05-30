@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import calendar.repositories.HolidayCalendarRepository;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class HolidayCalendarService {
@@ -52,5 +54,11 @@ public class HolidayCalendarService {
         holidayCalendar.addHolidayRule(newHolidayRule);
 
         return save(holidayCalendar);
+    }
+
+    public List<HolidayCalendar> holidaycalendarsWhereIsHoliday(LocalDate aDate) {
+        return this.findAll().stream().filter(aHolidayCalendar ->
+                                                aHolidayCalendar.isHoliday(aDate))
+                                        .collect(Collectors.toList());
     }
 }

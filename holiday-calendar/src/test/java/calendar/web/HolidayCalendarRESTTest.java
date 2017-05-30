@@ -185,4 +185,37 @@ public class HolidayCalendarRESTTest extends RESTTestBase {
                 .andExpect(jsonPath("$.holidayRules[0]").exists());
     }
 
+    @Test
+    public void whenAClientRequestsAllCalendarsWhereASpecifiedDateIsHoliday() throws Exception{
+        HolidayCalendar holidayCalendarArgentina = new HolidayCalendar("Argentina");
+        holidayCalendarArgentina.addHolidayRule(new HolidayRuleDayOfMonth(MonthDay.of(5,1)));
+        holidayCalendarService.save(holidayCalendarArgentina);
+
+        HolidayCalendar holidayCalendarUruguay = new HolidayCalendar("Uruguay");
+        holidayCalendarService.save(holidayCalendarUruguay);
+
+        mockClient.perform(get("/calendarios/es_feriado?fecha=2017-05-01")
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").value("Argentina"))
+                .andExpect(jsonPath("$.size()").value(1));
+    }
+
+    @Test
+    public void whenAClientRequestsAllCalendarsWhereTodayIsHoliday() throws Exception{
+        LocalDate today = LocalDate.now();
+        HolidayCalendar holidayCalendarArgentina = new HolidayCalendar("Argentina");
+        holidayCalendarArgentina.addHolidayRule(new HolidayRuleDate(today));
+        holidayCalendarService.save(holidayCalendarArgentina);
+
+        HolidayCalendar holidayCalendarUruguay = new HolidayCalendar("Uruguay");
+        holidayCalendarService.save(holidayCalendarUruguay);
+
+        mockClient.perform(get("/calendarios/es_feriado")
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").value("Argentina"))
+                .andExpect(jsonPath("$.size()").value(1));
+    }
+
 }

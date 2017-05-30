@@ -79,4 +79,12 @@ public class HolidayCalendarController {
         return holidayCalendarService.addHolidayRuleToCalendar(id, newHolidayRule);
     }
 
+    @RequestMapping(value = Endpoints.WHERE_IS_HOLIDAY, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public List<HolidayCalendar> holidayCalendarsWhereIsHoliday(@RequestParam(value = "fecha", required=false) String requiredDate) {
+        String today = LocalDate.now().toString();
+        Optional<String> aDate = Optional.ofNullable(requiredDate);
+        return holidayCalendarService.holidaycalendarsWhereIsHoliday(LocalDate.parse(aDate.orElse(today)));
+    }
+
 }

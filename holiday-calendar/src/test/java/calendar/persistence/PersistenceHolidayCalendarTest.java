@@ -1,5 +1,6 @@
 package calendar.persistence;
 
+import calendar.factories.HolidayCalendarTestFactory;
 import calendar.model.*;
 import calendar.model.utils.DateInterval;
 import calendar.services.HolidayCalendarService;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.MonthDay;
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -23,6 +25,8 @@ import static org.junit.Assert.assertTrue;
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
 public class PersistenceHolidayCalendarTest {
+
+    private HolidayCalendarTestFactory factory = new HolidayCalendarTestFactory();
 
     @Autowired
     private HolidayCalendarService holidayCalendarService;
@@ -129,6 +133,32 @@ public class PersistenceHolidayCalendarTest {
         LocalDate aFirstOfMay = LocalDate.of(2010, 5,1);
 
         assertTrue(persistedHolidayCalendar.isHoliday(aFirstOfMay));
+    }
+
+    @Test
+    public void persistedholidayRulesWhereADateIsHolidayCanBeObtained(){
+        HolidayCalendar holidayCalendarArgentina = new HolidayCalendar("Argentina");
+        holidayCalendarArgentina.addHolidayRule(new HolidayRuleDate(LocalDate.of(2017, 5, 1)));
+
+        HolidayCalendar holidayCalendarAlemania = new HolidayCalendar("Alemania");
+        holidayCalendarArgentina.addHolidayRule(new HolidayRuleDayOfWeek(DayOfWeek.MONDAY));
+
+        HolidayCalendar holidayCalendarUruguay = new HolidayCalendar("Uruguay");
+        holidayCalendarUruguay.addHolidayRule(factory.newHolidayRuleWithInterval(
+                new HolidayRuleDayOfMonth(MonthDay.of(5,1)),
+                LocalDate.of(2010, 1, 1),
+                LocalDate.of(2016, 12, 31)
+        ));
+
+        holidayCalendarService.save(holidayCalendarAlemania);
+        holidayCalendarService.save(holidayCalendarArgentina);
+        holidayCalendarService.save(holidayCalendarUruguay);
+
+
+        LocalDate aDate = LocalDate.of(2017, 5, 1);
+        List<HolidayCalendar> expected = holidayCalendarService.holidaycalendarsWhereIsHoliday(aDate);
+
+        assertTrue(expected.stream().allMatch(aHolidayCalendar -> aHolidayCalendar.isHoliday(aDate)));
     }
 
 }
