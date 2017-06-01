@@ -1,0 +1,18 @@
+<h1>Mis Calendarios</h1>
+
+<div>
+  {{combo-box template="Calendarios" values=(map-by "name" model)}}
+</div>
+
+<div>
+  {{combo-box template="Año" values=(lista-numeros-entre 1980 2030)}}
+</div>
+
+<ul>
+  {{#each model as |calendario|}}
+    <li>{{calendario.id}}</li>
+    <li>{{calendario.name}}</li>
+  {{/each}}
+</ul>
+<button>Clickeame</button>
+{{outlet}}
