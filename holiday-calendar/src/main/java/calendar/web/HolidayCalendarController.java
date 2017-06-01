@@ -28,7 +28,7 @@ public class HolidayCalendarController {
         return "index";
     }
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = Endpoints.ALL_CALENDARS, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public List<HolidayCalendar> allCalendars(@RequestParam(value = "nombre", required=false, defaultValue = "") String aName) {
