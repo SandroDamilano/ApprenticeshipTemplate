@@ -1,18 +1,19 @@
 <h1>Mis Calendarios</h1>
 
 <div>
-  {{combo-box template="Calendarios" values=(map-by "name" model)}}
+  {{combo-box template="Calendarios" values=(map-by "name" model) onSelected=(action 'mostrarAnios')}}
 </div>
 
+{{#if aniosOK}}
 <div>
-  {{combo-box template="Año" values=(numbersBetween 1980 2030)}}
+  {{combo-box template="Año" values=(numbersBetween 1980 2030) onSelected=(action 'saludar')}}
 </div>
+{{/if}}
 
-<ul>
-  {{#each model as |calendario|}}
-    <li>{{calendario.id}}</li>
-    <li>{{calendario.name}}</li>
-  {{/each}}
-</ul>
-<button>Clickeame</button>
+{{#if saludarOK}}
+<div>
+  ¡HOLAAAAAAA!
+</div>
+{{/if}}
+
 {{outlet}}
