@@ -6,5 +6,4 @@ export default DS.RESTAdapter.extend({
   pathForType: function(type) {
     return 'calendarios';
   }
-  // namespace: '/calendarios'
 });

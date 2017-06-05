@@ -1,0 +1,8 @@
+<div class="input-field">
+  <select class="browser-default">
+    <option disabled selected>{{template}}</option>
+    {{#each values as |value|}}
+      <option {{action "select" value.id on="mouseDown"}}>{{value.name}}</option>
+    {{/each}}
+  </select>
+</div>

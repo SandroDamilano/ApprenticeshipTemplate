@@ -1,13 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  actions: {
-    saludar() {
-      this.set('saludarOK', true);
-    },
+  calendarioSeleccionado: null,
 
-    mostrarAnios(){
-      this.set('aniosOK', true);
+  actions: {
+    seleccionar(unCalendario){
+      this.set('calendarioSeleccionado', unCalendario);
     }
   }
 });

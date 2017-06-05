@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('calendarios');
+  this.route('feriados');
 });
 
 export default Router;
