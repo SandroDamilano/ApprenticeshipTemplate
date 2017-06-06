@@ -1,0 +1,10 @@
+<div>
+  Aquí se listan los feriados:
+  {{#each model as |feriado|}}
+    <div>
+      {{feriado.anio}}
+    </div>
+  {{/each}}
+</div>
+
+{{outlet}}

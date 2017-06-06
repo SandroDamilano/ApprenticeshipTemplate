@@ -12,18 +12,21 @@
         {{/each}}
       </select>
     </div>
-    <!-- {{view select
+
+    {{!view select
         content = model
         optionValuePath="content.id"
         optionLabelPath="content.name"
-        selection=idSeleccionado}} -->
+        selection=idSeleccionado}}
   </div>
 </div>
 
 <div>
-  {{#link-to 'calendarios.feriados' calendarioSeleccionado class="btn btn-primary"}}
+  {{#link-to 'calendarios.calendario.feriados' calendarioSeleccionado class="btn btn-primary"}}
     Ver calendario
   {{/link-to}}
 </div>
 
-{{outlet}}
+<div>
+  {{outlet}}
+</div>
