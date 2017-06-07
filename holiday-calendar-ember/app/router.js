@@ -8,9 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('calendarios', function(){
-    this.route('calendario', {path: '/:calendario_id'}, function(){
-      this.route('feriados');
-    })
+    this.route('feriados', {path: '/:calendario_id'})
   });
 });
 
