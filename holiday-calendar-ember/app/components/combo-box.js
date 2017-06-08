@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   actions: {
-    select() {
-      this.get('onSelected')();
+    select(value) {
+      this.get('onSelected')(value);
     }
   },
 

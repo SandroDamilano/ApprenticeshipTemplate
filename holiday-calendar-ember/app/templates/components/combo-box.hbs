@@ -1,8 +1,15 @@
 <div class="input-field">
   <select class="browser-default">
-    <option disabled selected>{{template}}</option>
     {{#each values as |value|}}
-      <option {{action "select" on="mouseDown"}}>{{value}}</option>
+      {{#if (lt selected value)}}
+        <option {{action select value on="mouseDown"}}>{{value}}</option>
+      {{/if}}
+      {{#if (eq selected value)}}
+        <option selected {{action select value on="mouseDown"}}>{{value}}</option>
+      {{/if}}
+      {{#if (gt selected value)}}
+        <option {{action select value on="mouseDown"}}>{{value}}</option>
+      {{/if}}
     {{/each}}
   </select>
 </div>

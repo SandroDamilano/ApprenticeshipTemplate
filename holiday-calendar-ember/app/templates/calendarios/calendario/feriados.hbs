@@ -1,10 +1,43 @@
 <div>
-  Aquí se listan los feriados:
-  {{#each model as |feriado|}}
-    <div>
-      {{feriado.dia}}/{{feriado.mes}}/{{feriado.anio}}
+  <div class="row">
+  <div class="col s12">Seleccione el año deseado:
+  </div>
+    <div class="col s1"><span class="white-text">.</span></div>
+  <div class="col s2">
+
+    <div class="input-field">
+      <select class="browser-default">
+        {{#each (numbersBetween 1920 2030) as |value|}}
+          {{#if (lt anioSeleccionado value)}}
+            <option {{action "select" value on="mouseDown"}}>{{value}}</option>
+          {{/if}}
+          {{#if (eq anioSeleccionado value)}}
+            <option selected {{action "select" value on="mouseDown"}}>{{value}}</option>
+          {{/if}}
+          {{#if (gt anioSeleccionado value)}}
+            <option {{action "select" value on="mouseDown"}}>{{value}}</option>
+          {{/if}}
+        {{/each}}
+      </select>
     </div>
-  {{/each}}
+
+  </div>
+  </div>
+  <div class="row">
+    <div class="col s1"><span class="white-text">.</span></div>
+      <div class="col s3">
+        <div class="collection teal lighten-2" style="height: 200px; overflow-y: scroll;">
+          {{#each model as |feriado|}}
+          <a class="collection-item"><center>
+            {{feriado.dia}}/{{feriado.mes}}/{{feriado.anio}}
+            </center>
+          </a>
+          {{/each}}
+        </div>
+      </div>
+  </div>
 </div>
+
+{{anioSeleccionado}}
 
 {{outlet}}
