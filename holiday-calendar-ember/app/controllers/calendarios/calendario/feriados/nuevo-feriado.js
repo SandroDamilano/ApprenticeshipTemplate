@@ -5,10 +5,10 @@ export default Ember.Controller.extend({
 
   fechaFeriado: null,
 
-  DiaDelDiaDeMesFeriado: null,
-  MesDelDiaDeMesFeriado: null,
+  diaDelDiaDeMesFeriado: null,
+  mesDelDiaDeMesFeriado: null,
 
-  DiaDeSemanaFeriado: null,
+  diaDeSemanaFeriado: null,
 
   vigenciaDesde: null,
   vigenciaHasta: null,
@@ -22,6 +22,9 @@ export default Ember.Controller.extend({
     },
     selectDayOfMonthHoliday(){
       this.set("tipo", "HolidayRuleDayOfMonth");
+    },
+    submitHolidayRule(){
+
     }
   }
 });
