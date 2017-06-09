@@ -24,7 +24,15 @@ export default Ember.Controller.extend({
       this.set("tipo", "HolidayRuleDayOfMonth");
     },
     submitHolidayRule(){
-
+      let newHolidayRule = this.get('store').createRecord('holiday-rule', {
+                            tipo: this.get('tipo'),
+                            fechaFeriado: this.get('fechaFeriado'),
+                            diaDelDiaDeMesFeriado: this.get('diaDelDiaDeMesFeriado'),
+                            mesDelDiaDeMesFeriado: this.get('mesDelDiaDeMesFeriado'),
+                            diaDeSemanaFeriado: this.get('diaDeSemanaFeriado'),
+                          });
+      debugger;
+      newHolidayRule.save();
     }
   }
 });
