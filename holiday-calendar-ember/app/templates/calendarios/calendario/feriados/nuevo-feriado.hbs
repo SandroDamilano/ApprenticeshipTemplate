@@ -1,48 +1,64 @@
-<div><h3>Nuevo Feriado</h3>
+<div>
+  <h3>
+    <center>Nuevo Feriado</center>
+  </h3>
   <form>
     <p>
-      <div class="row">
-        <div class="col s3">
-          <input class="with-gap" name="holidayType" id="dateHolidayButton" type="radio" onclick={{action "selectDateHoliday"}}/>
+    <div class="row">
+      <div class="col s6">
+        <center>
+          <input class="with-gap" name="holidayType" id="dateHolidayButton" type="radio" onclick={{action
+            "selectDateHoliday"}}/>
           <label for="dateHolidayButton">Día específico</label>
-        </div>
-        <div class="col s3">
-
-          {{input type="date" value=fechaFeriado}}
-        </div>
+        </center>
       </div>
+      <div class="col s3">
+
+        {{input type="date" value=fechaFeriado}}
+      </div>
+    </div>
     </p>
 
     <p>
-      <div class="row">
-        <div class="col s3">
-          <input class="with-gap" name="holidayType" id="dayOfWeekHolidayButton" type="radio" onclick={{action "selectDayOfWeekHoliday"}}/>
+    <div class="row">
+      <div class="col s6">
+        <center>
+          <input class="with-gap" name="holidayType" id="dayOfWeekHolidayButton" type="radio" onclick={{action
+            "selectDayOfWeekHoliday"}}/>
           <label for="dayOfWeekHolidayButton">Dia de semana</label>
-        </div>
-        <div class="col s3">
-          {{input type="text" value=diaDeSemanaFeriado}}
-        </div>
+        </center>
       </div>
+      <div class="col s3">
+        <center>
+          {{input type="text" value=diaDeSemanaFeriado}}
+        </center>
+      </div>
+    </div>
     </p>
     <p>
-      <div class="row">
-        <div class="col s3">
-          <input class="with-gap" name="holidayType" id="dayOfMonthHolidayButton" type="radio" onclick={{action "selectDayOfMonthHoliday"}}/>
+    <div class="row">
+      <div class="col s6">
+        <center>
+          <input class="with-gap" name="holidayType" id="dayOfMonthHolidayButton" type="radio" onclick={{action
+            "selectDayOfMonthHoliday"}}/>
           <label for="dayOfMonthHolidayButton">Dia del mes</label>
-        </div>
-        <div class="col s3">
-          {{input type="text" value=diaDelDiaDeMesFeriado}}
-        </div>
-        <div class="col s3">
-          {{input type="text" value=desDelDiaDeMesFeriado}}
-        </div>
+        </center>
       </div>
+      <div class="col s3">
+        {{input type="text" value=diaDelDiaDeMesFeriado}}
+      </div>
+      <div class="col s3">
+        {{input type="text" value=desDelDiaDeMesFeriado}}
+      </div>
+    </div>
     </p>
     <div>
-      <input type="button" value="Guardar" onclick={{action "submitHolidayRule"}} />
-      {{#input type="button" action="submitHolidayRule" on="click"}}
-        Guardar
-      {{/input}}
+      <center>
+        <input type="button" value="Guardar" onclick={{action "submitHolidayRule"}}/>
+        {{#input type="button" action="submitHolidayRule" on="click"}}
+          Guardar
+        {{/input}}
+      </center>
     </div>
   </form>
 </div>
