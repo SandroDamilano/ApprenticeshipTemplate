@@ -29,10 +29,9 @@ export default Ember.Controller.extend({
                             fechaFeriado: this.get('fechaFeriado'),
                             diaDelDiaDeMesFeriado: this.get('diaDelDiaDeMesFeriado'),
                             mesDelDiaDeMesFeriado: this.get('mesDelDiaDeMesFeriado'),
-                            diaDeSemanaFeriado: this.get('diaDeSemanaFeriado'),
+                            diaDeSemanaFeriado: this.get('diaDeSemanaFeriado')
                           });
-      debugger;
-      newHolidayRule.save();
+      newHolidayRule.save({ adapterOptions: { calendario_id: this.model.query.calendarioId }});
     }
   }
 });
