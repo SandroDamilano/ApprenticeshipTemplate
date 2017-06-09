@@ -5,10 +5,10 @@
   <div class="col s4"><span class="white-text">.</span></div>
   <div class="col s4">
     <div class="input-field">
-      <select class="browser-default">
+      <select class="browser-default" onchange={{action "seleccionar" value="target.value"}}>
         <option disabled selected>Seleccione el calendario deseado:</option>
         {{#each model as |calendario|}}
-          <option {{action "seleccionar" calendario on="mouseDown"}}>{{calendario.name}}</option>
+          <option value={{calendario.id}}>{{calendario.name}}</option>
         {{/each}}
       </select>
     </div>
