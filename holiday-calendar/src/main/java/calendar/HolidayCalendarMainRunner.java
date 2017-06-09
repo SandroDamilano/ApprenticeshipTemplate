@@ -17,5 +17,4 @@ public class HolidayCalendarMainRunner extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(HolidayCalendarMainRunner.class, args);
     }
-
 }
