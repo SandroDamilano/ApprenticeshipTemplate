@@ -3,8 +3,8 @@
     <p>
       <div class="row">
         <div class="col s3">
-        <input class="with-gap" name="group1" type="radio" onclick={{action "selectDateHoliday"}}/>
-        <label for="test1">Día específico</label>
+        <input class="with-gap" name="holidayType" id="dateHolidayButton" type="radio" onclick={{action "selectDateHoliday"}}/>
+        <label for="dateHolidayButton">Día específico</label>
 
         </div>
       <!--<div class="col s4">-->
@@ -14,12 +14,12 @@
     </p>
 
     <p>
-      <input class="with-gap" name="group1" type="radio" onclick={{action "selectDayOfWeekHoliday"}}/>
-      <label for="test2">Dia de semana</label>
+      <input class="with-gap" name="holidayType" id="dayOfWeekHolidayButton" type="radio" onclick={{action "selectDayOfWeekHoliday"}}/>
+      <label for="dayOfWeekHolidayButton">Dia de semana</label>
     </p>
     <p>
-      <input class="with-gap" name="group1" type="radio" onclick={{action "selectDayOfMonthHoliday"}}/>
-      <label for="test3">Dia del mes</label>
+      <input class="with-gap" name="holidayType" id="dayOfMonthHolidayButton" type="radio" onclick={{action "selectDayOfMonthHoliday"}}/>
+      <label for="dayOfMonthHolidayButton">Dia del mes</label>
     </p>
   </form>
 </div>
