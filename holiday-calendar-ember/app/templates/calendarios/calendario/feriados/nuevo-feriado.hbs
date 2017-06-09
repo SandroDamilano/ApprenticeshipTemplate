@@ -1,23 +1,24 @@
 <div><h3>Nuevo Feriado</h3>
   <form>
     <p>
-    <div class="row">
-      <div class="col s3">
-      <input class="with-gap" name="group1" type="radio" />
-      <label for="test1">Día específico</label>
+      <div class="row">
+        <div class="col s3">
+        <input class="with-gap" name="group1" type="radio" onclick={{action "selectDateHoliday"}}/>
+        <label for="test1">Día específico</label>
+
+        </div>
+      <!--<div class="col s4">-->
+        <!--<input type="date" class="datepicker">-->
+      <!--</div>-->
       </div>
-    <!--<div class="col s4">-->
-      <!--<input type="date" class="datepicker">-->
-    <!--</div>-->
-  </div>
     </p>
 
     <p>
-      <input class="with-gap" name="group1" type="radio" />
+      <input class="with-gap" name="group1" type="radio" onclick={{action "selectDayOfWeekHoliday"}}/>
       <label for="test2">Dia de semana</label>
     </p>
     <p>
-      <input class="with-gap" name="group1" type="radio" />
+      <input class="with-gap" name="group1" type="radio" onclick={{action "selectDayOfMonthHoliday"}}/>
       <label for="test3">Dia del mes</label>
     </p>
   </form>

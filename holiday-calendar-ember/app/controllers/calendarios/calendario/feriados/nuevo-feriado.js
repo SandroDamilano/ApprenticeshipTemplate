@@ -13,5 +13,15 @@ export default Ember.Controller.extend({
   vigenciaDesde: null,
   vigenciaHasta: null,
 
-
+  actions:{
+    selectDateHoliday(){
+      this.set("tipo", "HolidayRuleDate");
+    },
+    selectDayOfWeekHoliday(){
+      this.set("tipo", "HolidayRuleDayOfWeek");
+    },
+    selectDayOfMonthHoliday(){
+      this.set("tipo", "HolidayRuleDayOfMonth");
+    }
+  }
 });
