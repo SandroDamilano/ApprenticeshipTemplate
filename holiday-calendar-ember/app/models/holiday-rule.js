@@ -5,10 +5,10 @@ export default DS.Model.extend({
 
   fechaFeriado: DS.attr('string'),
 
-  DiaDelDiaDeMesFeriado: DS.attr('number'),
-  MesDelDiaDeMesFeriado: DS.attr('string'),
+  diaDelDiaDeMesFeriado: DS.attr('number'),
+  mesDelDiaDeMesFeriado: DS.attr('string'),
 
-  DiaDeSemanaFeriado: DS.attr('string'),
+  diaDeSemanaFeriado: DS.attr('string'),
 
   vigenciaDesde: DS.attr('string'),
   vigenciaHasta: DS.attr('string')
