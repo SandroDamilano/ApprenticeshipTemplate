@@ -12,7 +12,7 @@ export default Ember.Component.extend({
         gutter: 0, // Spacing from edge
         belowOrigin: false, // Displays dropdown below the button
         alignment: 'left', // Displays dropdown with edge aligned to the left of button
-        stopPropagation: false // Stops event propagation
+        stopPropagation: false // Stops event propagation probando
       });
     }
   }
