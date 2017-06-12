@@ -24,14 +24,31 @@ export default Ember.Controller.extend({
       this.set("tipo", "HolidayRuleDayOfMonth");
     },
     submitHolidayRule(){
-      let newHolidayRule = this.get('store').createRecord('holiday-rule', {
-                            tipo: this.get('tipo'),
-                            fechaFeriado: this.get('fechaFeriado'),
-                            diaDelDiaDeMesFeriado: this.get('diaDelDiaDeMesFeriado'),
-                            mesDelDiaDeMesFeriado: this.get('mesDelDiaDeMesFeriado'),
-                            diaDeSemanaFeriado: this.get('diaDeSemanaFeriado')
-                          });
-      newHolidayRule.save({ adapterOptions: { calendario_id: this.model.query.calendarioId }});
+      debugger;
+      if(this.get('tipo') == 'HolidayRuleDayOfWeek'){
+        let newHolidayRule = this.get('store').createRecord('holiday-rule-day-of-week', {
+          type: this.get('tipo'),
+          dayOfWeekHoliday: this.get('diaDeSemanaFeriado')
+        });
+        newHolidayRule.save({ adapterOptions: { calendario_id: this.model.query.calendarioId }});
+      }
+
+      if(this.get('tipo') == 'HolidayRuleDate'){
+        let newHolidayRule = this.get('store').createRecord('holiday-rule-date', {
+          type: this.get('tipo'),
+          date: this.get('fechaFeriado')
+        });
+        newHolidayRule.save({ adapterOptions: { calendario_id: this.model.query.calendarioId }});
+      }
+
+      if(this.get('tipo') == 'HolidayRuleDayOfMonth'){
+        let newHolidayRule = this.get('store').createRecord('holiday-rule-day-of-month', {
+          type: this.get('tipo'),
+          dayOfMonthHoliday: '--' + this.get('mesDelDiaDeMesFeriado') + '-' + this.get('diaDelDiaDeMesFeriado'),
+        });
+        newHolidayRule.save({ adapterOptions: { calendario_id: this.model.query.calendarioId }});
+      }
+
     }
   }
 });
