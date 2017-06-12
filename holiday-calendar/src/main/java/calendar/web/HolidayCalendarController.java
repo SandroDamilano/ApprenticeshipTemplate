@@ -28,7 +28,7 @@ public class HolidayCalendarController {
         return "index";
     }
 
-    @CrossOrigin(origins = "http://192.168.1.68:4200")
+    @CrossOrigin(origins = "http://192.168.1.106:4200")
     @RequestMapping(value = Endpoints.ALL_CALENDARS, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public List<HolidayCalendar> allCalendars(@RequestParam(value = "nombre", required=false, defaultValue = "") String aName) {
@@ -41,7 +41,7 @@ public class HolidayCalendarController {
         return holidayCalendarService.save(newHolidayCalendar);
     }
 
-    @CrossOrigin(origins = "http://192.168.1.68:4200")
+    @CrossOrigin(origins = "http://192.168.1.106:4200")
     @RequestMapping(value = Endpoints.GET_CALENDAR, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public HolidayCalendar getCalendar(@PathVariable Long id) {
@@ -55,7 +55,7 @@ public class HolidayCalendarController {
         return holidayCalendarService.findById(id);
     }
 
-    @CrossOrigin(origins = "http://192.168.1.68:4200")
+    @CrossOrigin(origins = "http://192.168.1.106:4200")
     @RequestMapping(value = Endpoints.HOLIDAYS_DURING, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public List<LocalDate> getHolidayDatesDuring(@PathVariable Long id, @RequestParam(value = "desde", required=false) String start, @RequestParam(value = "hasta", required=false) String end) {
