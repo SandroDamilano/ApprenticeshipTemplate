@@ -75,6 +75,7 @@ public class HolidayCalendarController {
         return holidayCalendar.holidayDatesBetween(interval);
     }
 
+    @CrossOrigin(origins = "http://192.168.1.68:4200")
     @RequestMapping(value = Endpoints.ADD_HOLIDAY_RULE, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public HolidayCalendar addHolidayRule(@PathVariable Long id, @RequestBody HolidayRule newHolidayRule) {
