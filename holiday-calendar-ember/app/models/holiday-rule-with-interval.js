@@ -1,7 +1,7 @@
 import HolidayRule from './holiday-rule';
+import DS from 'ember-data';
 
 export default HolidayRule.extend({
-  vigenciaDesde: DS.attr('string'),
-  vigenciaHasta: DS.attr('string'),
-  reglaDeFeriado: DS.belongsTo('holiday-rule', {polimorphic: true})
+  interval: DS.belongsTo('interval'),
+  holidayRule: DS.belongsTo('holiday-rule', {polimorphic: true})
 });
