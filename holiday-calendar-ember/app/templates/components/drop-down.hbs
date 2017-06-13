@@ -1,1 +1,16 @@
-{{yield}}
+
+<div>
+  <!-- Dropdown Trigger -->
+  <a class='dropdown-button btn' data-activates='dropdown1'>Ver Calendarios</a>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li>
+      {{#each calendarios as |calendario|}}
+        {{#link-to 'calendarios.calendario.feriados' calendario}}
+          {{calendario.name}}
+        {{/link-to}}
+      {{/each}}
+    </li>
+  </ul>
+</div>
