@@ -28,7 +28,8 @@ export default Ember.Controller.extend({
         type: this.get('tipo'),
         dayOfWeekHoliday: this.get('diaDeSemanaFeriado'),
         date: this.get('fechaFeriado'),
-        dayOfMonthHoliday: '--' + this.get('mesDelDiaDeMesFeriado') + '-' + this.get('diaDelDiaDeMesFeriado'),
+        dayFromDayOfMonthHoliday: this.get('diaDelDiaDeMesFeriado'),
+        monthFromDayOfMonthHoliday: this.get('mesDelDiaDeMesFeriado'),
       });
 
       let desde = this.get('vigenciaDesde');

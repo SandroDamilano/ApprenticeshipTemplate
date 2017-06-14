@@ -6,12 +6,15 @@ export default ApplicationSerializer.extend({
     if(!json.dayOfWeekHoliday){
       delete json.dayOfWeekHoliday;
     }
-    if(json.dayOfMonthHoliday.indexOf('null') != -1){
-      delete json.dayOfMonthHoliday;
+    if(json.dayFromDayOfMonthHoliday && json.monthFromDayOfMonthHoliday){
+      json.dayOfMonthHoliday = '--' + json.monthFromDayOfMonthHoliday + '-' + json.dayFromDayOfMonthHoliday;
     }
     if(!json.date){
       delete json.date;
     }
+
+    delete json.dayFromDayOfMonthHoliday;
+    delete json.monthFromDayOfMonthHoliday;
 
     return json;
   },
