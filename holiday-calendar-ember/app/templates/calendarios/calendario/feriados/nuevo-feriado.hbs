@@ -56,17 +56,20 @@
 
     <p>
     <div class="row">
-      <div class="col s3">
-        {{input type="text" value=vigenciaDesde}}
-      </div>
-      <div class="col s3">
-        {{input type="text" value=vigenciaHasta}}
-      </div>
+      <center>
+        <div class="col s3">
+          {{input type="text" value=vigenciaDesde}}
+        </div>
+        <div class="col s3">
+          {{input type="text" value=vigenciaHasta}}
+        </div>
+      </center>
     </div>
     </p>
     <div>
       <center>
-        <input type="button" value="Guardar" onclick={{action "submitHolidayRule"}}/>
+        {{input type="button" class="btn btn-primary" value="Guardar" click=(action "submitHolidayRule")}}
+        <!--<input type="button" class="btn btn-primary" value="Guardar" onclick={{action "submitHolidayRule"}}/>-->
       </center>
     </div>
   </form>
