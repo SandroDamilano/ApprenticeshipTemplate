@@ -13,8 +13,7 @@
         </center>
       </div>
       <div class="col s3">
-
-        {{input type="date" value=fechaFeriado}}
+        {{date-picker fecha=fechaFeriado}}
       </div>
     </div>
     </p>
@@ -70,10 +69,12 @@
     <div class="row">
       <center>
         <div class="col s3">
-          {{input type="text" value=vigenciaDesde}}
+          {{date-picker fecha=vigenciaDesde}}
+          {{!input type="text" value=vigenciaDesde}}
         </div>
         <div class="col s3">
-          {{input type="text" value=vigenciaHasta}}
+          {{date-picker fecha=vigenciaHasta}}
+          {{!input type="text" value=vigenciaHasta}}
         </div>
       </center>
     </div>

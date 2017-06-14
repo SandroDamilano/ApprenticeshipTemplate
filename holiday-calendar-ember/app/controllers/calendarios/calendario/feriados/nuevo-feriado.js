@@ -17,15 +17,19 @@ export default Ember.Controller.extend({
     selectDateHoliday(){
       this.set("tipo", "HolidayRuleDate");
     },
+
     selectDayOfWeekHoliday(){
       this.set("tipo", "HolidayRuleDayOfWeek");
     },
+
     selectDayOfMonthHoliday(){
       this.set("tipo", "HolidayRuleDayOfMonth");
     },
+
     selectDayOfWeek(aDayOfWeek){
       this.set("diaDeSemanaFeriado", aDayOfWeek);
     },
+
     submitHolidayRule(){
       let newHolidayRule = this.get('store').createRecord('holiday-rule', {
         type: this.get('tipo'),
