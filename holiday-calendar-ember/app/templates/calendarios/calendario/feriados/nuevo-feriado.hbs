@@ -30,7 +30,19 @@
       </div>
       <div class="col s3">
         <center>
-          {{input type="text" value=diaDeSemanaFeriado}}
+          {{!input type="text" value=diaDeSemanaFeriado}}
+          <div class="input-field">
+            <select class="browser-default" onchange={{action "selectDayOfWeek" value="target.value"}}>
+              <option selected>Día de semana</option>
+              <option value="MONDAY">Lunes</option>
+              <option value="TUESDAY">Martes</option>
+              <option value="WEDNESDAY">Miércoles</option>
+              <option value="THURSDAY">Jueves</option>
+              <option value="FRIDAY">Viernes</option>
+              <option value="SATURDAY">Sábado</option>
+              <option value="SUNDAY">Domingo</option>
+            </select>
+          </div>
         </center>
       </div>
     </div>
